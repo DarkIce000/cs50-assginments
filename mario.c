@@ -8,7 +8,7 @@ int main(void)
     {
         n = get_int("height: ");
     }
-    while( n<0 ||n>9 );
+    while( n<1 ||n>9 );
 
 
     //implementation of pattern
@@ -16,11 +16,11 @@ int main(void)
 
 //for column printing
     int i;
-    for ( i = 1; i<n; i++)
+    for ( i = 1; i<n+1; i++)
     {
             //for rows printing
         int k;
-        for (k=(n-i); k>1 ; k-- )
+        for (k=(n-i); k>0 ; k-- )
             {
                 printf(" ");
             }
