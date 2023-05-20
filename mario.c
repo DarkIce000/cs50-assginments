@@ -16,7 +16,7 @@ int main(void)
 
 //for column printing
     int i;
-    for ( i = 0; i<n; i++)
+    for ( i = 1; i<n; i++)
     {
             //for rows printing
         int k;
