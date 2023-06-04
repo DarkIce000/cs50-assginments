@@ -53,11 +53,10 @@ int compute_score(string word)
                 if(word[i] == albt[j] || word[i] == Calbt[j])
                 {
                     m = POINTS[j];
+                    //summing only when we get letters
                     sum += m;
                 }
             }
-        //summing up over and over again after getting score;
-
     }
     return sum;
 }
