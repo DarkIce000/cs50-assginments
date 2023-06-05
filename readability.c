@@ -81,7 +81,7 @@ int nsentence(string sentences)
     int m = 0;
     for (int i = 0; i < strlen(sentences); i++)
     {
-        if(sentences[i] =='!' || sentences[i] == '.')
+        if(sentences[i] =='!' || sentences[i] == '.' || sentences[i] == '?')
         {
             m++;
         }
