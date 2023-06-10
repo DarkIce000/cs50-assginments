@@ -2,10 +2,10 @@ sort1 uses: bubble sort
 
 How do you know?: time difference between (random txt 10000) and (sorted txt 10000) is approx. 0.250s
 
-sort2 uses: selection sort
+sort2 uses: merge sort
 
 How do you know?: time difference between random txt 10000 and sorted txt 10000 is approx 0.010 seconds
 
-sort3 uses: merge sort
+sort3 uses: selection sort
 
 How do you know?: time taken is approx. same, by running all of txt files random and sorted and reversed.
