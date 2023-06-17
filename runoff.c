@@ -232,6 +232,7 @@ bool is_tie(int min)
                 break;
             }
         }
+    }
     return tie;
 }
 
