@@ -138,10 +138,10 @@ bool vote(int voter, int rank, string name)
                 {
                     //updating according to the rank of the candidate preference list
                     preferences[voter][rank] = i;
+                    return true;
                 }
             }
         }
-        return true;
     }
     // if the votes recorded sucessfully then update the vote count;
     return false;
