@@ -184,7 +184,7 @@ bool print_winner(void)
     // TODO
     for(int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes == ((voter_count/2) + 1))
+        if(candidates[i].votes >= ((voter_count/2) + 1))
         {
             printf("%s", candidates[i].name);
             return true;
@@ -200,9 +200,13 @@ int find_min(void)
     int min = MAX_VOTERS;
     for(int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes <= min)
+        if(!candidates[i].eliminated)
         {
-            min = candidates[i].votes;
+            if(candidates[i].votes <= min)
+            {
+                min = candidates[i].votes;
+            }
+
         }
     }
     return min;
@@ -212,13 +216,12 @@ int find_min(void)
 bool is_tie(int min)
 {
     // TODO
-    bool tie;
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes == min)
-            tie = true;
+            return true;
     }
-    return tie;
+    return false;
 }
 
 // Eliminate the candidate (or candidates) in last place
