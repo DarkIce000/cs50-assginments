@@ -104,9 +104,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 //finding the avg of the middle pixels which has 8 neighbours
                    //avg calculate through sum of the middle line + middle line - 1 + middle line + 1;
 
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed + copy_image [i-1][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/9;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/9;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen + copy_image [i-1][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/9;
+                int avg_red = round (((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed + copy_image [i-1][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/9);
+                int avg_blue = round (((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/9);
+                int avg_green = round (((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen + copy_image [i-1][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/9);
 
                 // now the avg is calculated time for putting the value of the
                 image[i][j].rgbtRed = avg_red;
@@ -117,9 +117,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //top edge
             if(i == 0 && j != 0 && j != width-1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/6;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/6;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/6;
+                int avg_red = round (((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/6);
+                int avg_blue = round (((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/6);
+                int avg_green = round (((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/6);
                 // now the avg is calculated time for putting the value of the
                 image[i][j].rgbtRed = avg_red;
                 image[i][j].rgbtGreen = avg_green;
@@ -129,9 +129,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //left side edge
             if(j == 0 && i != 0 && i != height-1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed +  copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed  + copy_image [i-1][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/6;
-                int avg_blue = ((copy_image[i][j].rgbtBlue +  copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue +  copy_image [i-1][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue +  copy_image [i + 1][j+1].rgbtBlue))/6;
-                int avg_green = ((copy_image[i][j].rgbtGreen +  copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen +  copy_image [i-1][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen +  copy_image [i + 1][j+1].rgbtGreen))/6;
+                int avg_red = round (((copy_image[i][j].rgbtRed +  copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed  + copy_image [i-1][j+1].rgbtRed) + (copy_image[i + 1][j].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/6);
+                int avg_blue = round (((copy_image[i][j].rgbtBlue +  copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue +  copy_image [i-1][j+1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue +  copy_image [i + 1][j+1].rgbtBlue))/6);
+                int avg_green = round (((copy_image[i][j].rgbtGreen +  copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen +  copy_image [i-1][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen +  copy_image [i + 1][j+1].rgbtGreen))/6);
                 // now the avg is calculated time for putting the value of the
                 image[i][j].rgbtRed = avg_red;
                 image[i][j].rgbtGreen = avg_green;
@@ -141,9 +141,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //right side edge
             if(j == width-1 && i != 0 && i != height-1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed ) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed ) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed ))/6;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue ) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue ))/6;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen ) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen))/6;
+                int avg_red = round ( ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed ) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed ) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed ))/6);
+                int avg_blue = round ( ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue ) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue ))/6);
+                int avg_green = round ( ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen ) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen))/6);
                 // now the avg is calculated time for putting the value of the
                 image[i][j].rgbtRed = avg_red;
                 image[i][j].rgbtGreen = avg_green;
@@ -154,9 +154,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //bottom edge
             if(i == height - 1 && j != 0 && j != width-1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed + copy_image [i-1][j+1].rgbtRed))/6;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue))/6;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen + copy_image [i-1][j+1].rgbtGreen))/6;
+                int avg_red =  round ( ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed + copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed + copy_image [i-1][j+1].rgbtRed))/6);
+                int avg_blue =  round (((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue))/6);
+                int avg_green =  round (((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen + copy_image [i-1][j+1].rgbtGreen))/6);
                 // now the avg is calculated time for putting the value of the
                 image[i][j].rgbtRed = avg_red;
                 image[i][j].rgbtGreen = avg_green;
@@ -167,31 +167,31 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //top left
             if(i == 0 && j == 0)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed  + copy_image [i][j+1].rgbtRed) +  (copy_image[i + 1][j].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/4;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image [i][j+1].rgbtBlue)  + (copy_image[i + 1][j].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/4;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/4;
+                int avg_red = round ( ((copy_image[i][j].rgbtRed  + copy_image [i][j+1].rgbtRed) +  (copy_image[i + 1][j].rgbtRed + copy_image [i + 1][j+1].rgbtRed))/4);
+                int avg_blue = round ( ((copy_image[i][j].rgbtBlue + copy_image [i][j+1].rgbtBlue)  + (copy_image[i + 1][j].rgbtBlue + copy_image [i + 1][j+1].rgbtBlue))/4);
+                int avg_green = round ( ((copy_image[i][j].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image [i + 1][j+1].rgbtGreen))/4);
             }
             //top right
             if(i == 0 && j == width - 1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed ) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed))/4;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue))/4;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen))/4;
+                int avg_red = round (((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed ) + (copy_image[i + 1][j].rgbtRed + copy_image[i + 1][j-1].rgbtRed))/4);
+                int avg_blue = round (((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue) + (copy_image[i + 1][j].rgbtBlue + copy_image[i + 1][j-1].rgbtBlue))/4);
+                int avg_green = round (((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen) + (copy_image[i + 1][j].rgbtGreen + copy_image[i + 1][j-1].rgbtGreen))/4);
             }
             //bottom right
             if(i == height - 1 && j == 0)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed) )/4 ;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue ) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue))/4 ;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen ))/4 ;
+                int avg_red = round (((copy_image[i][j].rgbtRed + copy_image[i][j-1].rgbtRed) + (copy_image[i-1][j].rgbtRed + copy_image[i-1][j-1].rgbtRed) )/4) ;
+                int avg_blue = round (((copy_image[i][j].rgbtBlue + copy_image[i][j-1].rgbtBlue ) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue))/4 );
+                int avg_green = round (((copy_image[i][j].rgbtGreen + copy_image[i][j-1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image[i-1][j-1].rgbtGreen ))/4) ;
 
             }
             //bottom left
             if(i == height - 1 && j == width - 1)
             {
-                int avg_red = ((copy_image[i][j].rgbtRed+ copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed  + copy_image [i-1][j+1].rgbtRed))/4;
-                int avg_blue = ((copy_image[i][j].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue))/4;
-                int avg_green = ((copy_image[i][j].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image [i-1][j+1].rgbtGreen))/4;
+                int avg_red = round (((copy_image[i][j].rgbtRed+ copy_image [i][j+1].rgbtRed) + (copy_image[i-1][j].rgbtRed  + copy_image [i-1][j+1].rgbtRed))/4);
+                int avg_blue = round (((copy_image[i][j].rgbtBlue + copy_image [i][j+1].rgbtBlue) + (copy_image[i-1][j].rgbtBlue + copy_image[i-1][j-1].rgbtBlue + copy_image [i-1][j+1].rgbtBlue))/4);
+                int avg_green = round (((copy_image[i][j].rgbtGreen + copy_image [i][j+1].rgbtGreen) + (copy_image[i-1][j].rgbtGreen + copy_image [i-1][j+1].rgbtGreen))/4);
 
             }
 
