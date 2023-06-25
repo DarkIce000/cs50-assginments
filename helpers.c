@@ -29,7 +29,7 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             //finding the avg of the rgb of each pixel
-            int red, blue, green;
+            float red, blue, green;
             red = image[i][j].rgbtRed;
             green = image[i][j].rgbtGreen;
             blue = image[i][j].rgbtBlue;
