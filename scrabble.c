@@ -1,5 +1,5 @@
-#include <ctype.h>
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -18,46 +18,42 @@ int main(void)
     int score1 = compute_score(word1);
     int score2 = compute_score(word2);
 
-   // TODO: Print the winner
-   if (score1 > score2)
-   {
-    printf("Player 1 wins! \n");
-   }
-   else if (score2> score1)
-   {
-    printf("Player 2 wins! \n");
-   }
-   else
-   {
-    printf("Tie\n");
-   }
+    // TODO: Print the winner
+    if (score1 > score2)
+    {
+        printf("Player 1 wins! \n");
+    }
+    else if (score2 > score1)
+    {
+        printf("Player 2 wins! \n");
+    }
+    else
+    {
+        printf("Tie\n");
+    }
 }
 
-
-//computing score function
+// computing score function
 int compute_score(string word)
 {
-    //loop for iterating through the letters of the word;
+    // loop for iterating through the letters of the word;
     int sum = 0;
-    for(int i = 0; i <strlen(word); i++)
+    for (int i = 0; i < strlen(word); i++)
     {
+        // checking the charachter, if matched, find the position and then by position put the points array;
+        int m;
+        for (int j = 0; j < 26; j++)
+        {
+            string albt = "abcdefghijklmnopqrstuvwxyz";
+            string Calbt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-            //checking the charachter, if matched, find the position and then by position put the points array;
-
-            int m;
-            for ( int j = 0 ; j < 26 ; j++)
+            if (word[i] == albt[j] || word[i] == Calbt[j])
             {
-                string albt ="abcdefghijklmnopqrstuvwxyz";
-                string Calbt ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-                if(word[i] == albt[j] || word[i] == Calbt[j])
-                {
-                    m = POINTS[j];
-                    //summing only when we get letters
-                    sum += m;
-                }
+                m = POINTS[j];
+                // summing only when we get letters
+                sum += m;
             }
+        }
     }
     return sum;
 }
-
