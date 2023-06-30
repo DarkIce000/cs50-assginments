@@ -22,7 +22,7 @@ int main(void)
         for (k = (n - i); k > 0; k--)
         {
 
-            printf(" ");
+            printf("  ");
         }
 
         // for row printing
