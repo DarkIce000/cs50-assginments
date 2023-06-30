@@ -22,7 +22,7 @@ int main(void)
         for (k = (n - i); k > 0; k--)
         {
 
-            printf("  ");
+            printf(" ");
         }
 
         // for row printing
@@ -35,7 +35,7 @@ int main(void)
 
         // printing mid space
 
-        printf(" ");
+        printf("  ");
 
         // printing the right side pattern
         for (j = 0; j < i; j++)
