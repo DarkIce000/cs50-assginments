@@ -8,7 +8,7 @@ int main(void)
     {
         n = get_int("height: ");
     }
-    while (n < 1 || n > 9);
+    while (n < 1 || n > 8);
 
     // implementation of pattern
 
