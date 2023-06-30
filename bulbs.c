@@ -21,7 +21,6 @@ int main(void)
 
     for(int i = 0; i < strlen(input); i++)
     {
-
         //putting the array into another array
         int bit[8];
         for(int j = BITS_IN_BYTE - 1; j >= 0; j--)
