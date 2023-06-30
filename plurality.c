@@ -10,15 +10,14 @@ typedef struct
 {
     string name;
     int votes;
-}
-candidate;
+} candidate;
 
 // Array of candidates
 candidate candidates[MAX];
 
 // Number of candidates
 int candidate_count;
-//greatest finding function
+// greatest finding function
 int greatest(void);
 
 // Function prototypes
@@ -42,7 +41,7 @@ int main(int argc, string argv[])
         return 2;
     }
 
-    //canditate storing loop
+    // canditate storing loop
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i].name = argv[i + 1];
@@ -61,7 +60,6 @@ int main(int argc, string argv[])
         {
             printf("Invalid vote.\n");
         }
-
     }
     // Display winner of election
     print_winner();
@@ -70,45 +68,44 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    //check for the name of the candidate if matches then update the vote count total of the canditate
-    for(int i = 0; i < candidate_count; i++)
+    // check for the name of the candidate if matches then update the vote count total of the canditate
+    for (int i = 0; i < candidate_count; i++)
     {
-        if(strcmp(candidates[i].name, name) == 0)
+        if (strcmp(candidates[i].name, name) == 0)
         {
             candidates[i].votes += 1;
             return true;
         }
     }
-    //if the name does not match any of the name of the canditate the return false
+    // if the name does not match any of the name of the canditate the return false
     return false;
 }
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-        //find all the elements in the array that has that greatest value;
-        //print those;
-    for(int i = 0; i < candidate_count; i++)
+    // find all the elements in the array that has that greatest value;
+    // print those;
+    for (int i = 0; i < candidate_count; i++)
     {
-        if(candidates[i].votes == greatest())
+        if (candidates[i].votes == greatest())
         {
             printf("%s\n", candidates[i].name);
         }
-
     }
     return;
 }
 
-//greatest number finding function
+// greatest number finding function
 int greatest(void)
 {
-        //find the greatest value in the array
+    // find the greatest value in the array
     int greatest_value = 0;
-    for(int i = 0; i < candidate_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
-            if (candidates[i].votes > greatest_value)
-            {
-                greatest_value = candidates[i].votes;
-            }
+        if (candidates[i].votes > greatest_value)
+        {
+            greatest_value = candidates[i].votes;
+        }
     }
     return greatest_value;
 }
