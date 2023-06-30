@@ -4,8 +4,8 @@ How do you know?: time difference between (random txt 10000) and (sorted txt 100
 
 sort2 uses: merge sort
 
-How do you know?: time difference between random txt 10000 and sorted txt 10000 is approx 0.010 seconds
+How do you know?:  time taken is approx. same, by running all of txt files random and sorted and reversed.
 
 sort3 uses: selection sort
 
-How do you know?: time taken is approx. same, by running all of txt files random and sorted and reversed.
+How do you know?: time difference between random txt 10000 and sorted txt 10000 is approx 0.010 seconds
