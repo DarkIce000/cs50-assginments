@@ -3,7 +3,7 @@
 answer = input('Greeting please: ')
 usrinput = answer.lower()
 #printing money owes
-if usrinput.startswith("hello"):
+if usrinput.startswith("hello") or usrinput.startswith(" hello ") or usrinput.startswith(" hello"):
     print('$0')
 elif  usrinput.startswith("h"):
     print('$20')
