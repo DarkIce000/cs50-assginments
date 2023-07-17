@@ -11,7 +11,7 @@ my_list = figlet.getFonts()
 #expect two argument 1. --f or font
 if (len(sys.argv) == 2) or (len(sys.argv) == 3):
     #checking for correct letter or word
-    if sys.argv[1] == "--f" or sys.argv[1] == "--font":
+    if sys.argv[1] == "-f" or sys.argv[1] == "--font":
         #checking for font present or not
         if (sys.argv[2]) in my_list:
             answer = input("type: ")
