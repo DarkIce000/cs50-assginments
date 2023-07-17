@@ -19,7 +19,7 @@ if (len(sys.argv) == 2) or (len(sys.argv) == 3):
             print(figlet.renderText(answer))
         elif not sys.argv[2] in my_list:
             print("invalid usage")
-            sys.exit(3)
+            sys.exit(2)
 
     elif sys.argv[1] == "0":
         #chose random font and set then print
@@ -29,7 +29,7 @@ if (len(sys.argv) == 2) or (len(sys.argv) == 3):
         print(figlet.renderText(answer))
     else:
         print("invalid usage")
-        sys.exit(1)
+        sys.exit(3)
 else:
     print("invalid usage")
     sys.exit(1)
