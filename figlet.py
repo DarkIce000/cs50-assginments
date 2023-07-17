@@ -31,7 +31,7 @@ if (len(sys.argv) == 2) or (len(sys.argv) == 3):
         print("invalid usage")
 else:
     print("invalid usage")
-    sys.exit(0)
+    sys.exit(1)
 
 
 
