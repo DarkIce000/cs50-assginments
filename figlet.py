@@ -29,6 +29,7 @@ if (len(sys.argv) == 2) or (len(sys.argv) == 3):
         print(figlet.renderText(answer))
     else:
         print("invalid usage")
+        sys.exit(1)
 else:
     print("invalid usage")
     sys.exit(1)
