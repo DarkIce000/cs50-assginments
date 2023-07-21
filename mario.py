@@ -1,5 +1,5 @@
 height = input("height: ")
-while not height.isnumeric() or int(height) <= 0:
+while not height.isnumeric() or int(height) <= 0 or int(height) >= 9:
     height = input("height: ")
 
 for i in range(1, int(height) + 1):
@@ -7,6 +7,6 @@ for i in range(1, int(height) + 1):
         print(" ", end ="")
     for k in range(int(i)):
         print("#", end ="")
-    print("\n")
+    print("")
 
 
