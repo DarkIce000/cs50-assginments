@@ -9,7 +9,9 @@ Times:
 
 Questions:
 
-Which predictions, if any, proved incorrect as you increased the number of simulations?: argentina
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+with small number of simulation belgium at not even in the list, but as we increase simulation the chances of winning gets stablises and belgium got the chances of winning highest
 
 Suppose you're charged a fee for each second of compute time your program uses.
-After how many simulations would you call the predictions "good enough"?: 1000
+After how many simulations would you call the predictions "good enough"?:
+over 1000 simulation the prediction get stablises 
