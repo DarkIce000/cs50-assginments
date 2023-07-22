@@ -11,13 +11,13 @@ cents = get_cents()
 
 #functions for calculating coins
 def calculate_quaters(cents):
-    return int(cents / 25)
+    return (cents*100 / 25)
 def calculate_dimes(cents):
-    return int(cents / 10)
+    return (cents*100 / 10)
 def calculate_nickels(cents):
-    return int(cents / 5)
+    return (cents*100 / 5)
 def calculate_pennies(cents):
-    return int(cents / 1)
+    return (cents*100 / 1)
 
 #calculating coins of each type
 quaters = calculate_quaters(cents)
