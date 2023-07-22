@@ -13,7 +13,7 @@ def main():
     elif grade >= 16:
         print("Grade 16+")
     else:
-        print("grade", grade)
+        print("Grade", grade)
 
 #functions for finding number of letters
 def NumberOfLetters(sentences):
