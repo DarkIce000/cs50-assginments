@@ -7,17 +7,17 @@ def get_cents():
         get_cents()
 
 #calling cen(ts for getting the input
-cents = get_cents()
+cents = get_cents() * 100
 
 #functions for calculating coins
 def calculate_quaters(cents):
-    return (cents*100 / 25)
+    return int(cents / 25)
 def calculate_dimes(cents):
-    return (cents*100 / 10)
+    return int(cents / 10)
 def calculate_nickels(cents):
-    return (cents*100 / 5)
+    return int(cents / 5)
 def calculate_pennies(cents):
-    return (cents*100 / 1)
+    return int(cents / 1)
 
 #calculating coins of each type
 quaters = calculate_quaters(cents)
