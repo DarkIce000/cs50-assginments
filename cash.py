@@ -1,15 +1,14 @@
-#function for getting get_cents
+# function for getting get_cents
 def get_cents():
     try:
         change_Owe = float(input("change owe: "))
         return change_Owe
     except:
         get_cents()
-
-#calling cen(ts for getting the input
+# calling cen(ts for getting the input
 cents = get_cents() * 100
-if cents > 0 :
-    #functions for calculating coins
+if cents > 0:
+    # functions for calculating coins
     def calculate_quaters(cents):
         return int(cents / 25)
     def calculate_dimes(cents):
@@ -19,7 +18,7 @@ if cents > 0 :
     def calculate_pennies(cents):
         return int(cents / 1)
 
-    #calculating coins of each type
+    # calculating coins of each type
     quaters = calculate_quaters(cents)
     cents = cents - 25 * quaters
     dimes = calculate_dimes(cents)
@@ -29,9 +28,8 @@ if cents > 0 :
     pennies = calculate_pennies(cents)
     cents = cents - 1 * pennies
 
-    #calculating coins
+    # calculating coins
     coins = quaters + dimes + nickels + pennies
     print(f"{coins}")
 else:
     get_cents()
-
