@@ -8,27 +8,30 @@ def get_cents():
 
 #calling cen(ts for getting the input
 cents = get_cents() * 100
+if cents > 0 :
+    #functions for calculating coins
+    def calculate_quaters(cents):
+        return int(cents / 25)
+    def calculate_dimes(cents):
+        return int(cents / 10)
+    def calculate_nickels(cents):
+        return int(cents / 5)
+    def calculate_pennies(cents):
+        return int(cents / 1)
 
-#functions for calculating coins
-def calculate_quaters(cents):
-    return int(cents / 25)
-def calculate_dimes(cents):
-    return int(cents / 10)
-def calculate_nickels(cents):
-    return int(cents / 5)
-def calculate_pennies(cents):
-    return int(cents / 1)
+    #calculating coins of each type
+    quaters = calculate_quaters(cents)
+    cents = cents - 25 * quaters
+    dimes = calculate_dimes(cents)
+    cents = cents - 10 * dimes
+    nickels = calculate_nickels(cents)
+    cents = cents - 5 * nickels
+    pennies = calculate_pennies(cents)
+    cents = cents - 1 * pennies
 
-#calculating coins of each type
-quaters = calculate_quaters(cents)
-cents = cents - 25 * quaters
-dimes = calculate_dimes(cents)
-cents = cents - 10 * dimes
-nickels = calculate_nickels(cents)
-cents = cents - 5 * nickels
-pennies = calculate_pennies(cents)
-cents = cents - 1 * pennies
+    #calculating coins
+    coins = quaters + dimes + nickels + pennies
+    print(f"{coins}")
+else:
+    get_cents()
 
-#calculating coins
-coins = quaters + dimes + nickels + pennies
-print(f"{coins}")
