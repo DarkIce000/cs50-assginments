@@ -6,7 +6,7 @@ def get_cents():
     except:
         get_cents()
 
-#calling cents for getting the input
+#calling cen(ts for getting the input
 cents = get_cents()
 
 #functions for calculating coins
