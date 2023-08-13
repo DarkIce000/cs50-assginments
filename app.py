@@ -27,16 +27,14 @@ db = SQL("sqlite:///finance.db")
 
 def username():
     user_id  = session.get("user_id")
+    if user_id is None:
+        return apology("something wrong")
     username = db.execute("SELECT username from users where id = ?", user_id)
     return username[0]["username"]
 
 def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
     return time
-
-def check_integeral(string):
-    if not isdigit(string):
-        return apology("invalid value")
 
 @app.after_request
 def after_request(response):
