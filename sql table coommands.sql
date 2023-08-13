@@ -15,11 +15,11 @@ CREATE TABLE sell (
 
 --------------------------------------
 CREATE TABLE transactions(
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    user_id TEXT NOT NULL,
-    transaction_type TEXT NOT NULL,
-    symbols TEXT NOT NULL,
-    shares INTEGER NOT NULL,
-    price INTEGER NOT NULL,
-    transaction_time TEXT NOT NULL
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT,
+    transaction_type TEXT,
+    symbols TEXT,
+    shares INTEGER,
+    price INTEGER,
+    transaction_time TEXT
 );
