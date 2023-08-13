@@ -167,12 +167,13 @@ def register():
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
 
-        check_usr = db.execute("SELECT UNIQUE username FROM users")
+        check_usr = db.execute("SELECT username FROM users GROUP BY username")
 
         if username is None or not  len(username) > 1 or not len(password) > 1:
             return apology("Username/ Password Required!")
         if not password == confirmation:
             return apology("Password donot match")
+
         for users in check_usr:
             if users["username"] == username:
                 return apology("username not available")
