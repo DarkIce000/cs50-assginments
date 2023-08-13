@@ -77,18 +77,19 @@ def buy():
         except:
             return apology("invalid value ")
 
-        data = lookup(name)
-        transaction_type = "buy"
-        available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
         #checking for possible errors
         if name is None or share is None:
             return apology("Invalid ")
         if data is None or share <= 0:
             return apology("INVALID Symbol")
+
+        data = lookup(name)
+        transaction_type = "buy"
+        available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
+
         if share * data["price"] > available_cash[0]["cash"]:
             return apology("bhikhaari sala")
-
         #store in sqlite table
         db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), transaction_type, data["name"], share, data["price"], transaction_time())
 
