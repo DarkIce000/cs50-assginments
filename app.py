@@ -82,13 +82,13 @@ def buy():
 
             data = lookup(name)
 
-            if data["price"] is None:
-                return apology("something tickle")
+            if data["price"] is None or data["symbol"] is None or data["name"] is None:
+                return apology("data[symbol]")
 
             transaction_type = "buy"
             available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
-            if available_cash is None:
+            if available_cash[0]["cash"] is None:
                 return apology("no scuh row")
             #checking for possible errors
 
