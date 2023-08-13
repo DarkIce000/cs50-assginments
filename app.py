@@ -70,40 +70,44 @@ def index():
 def buy():
     if request.method == "POST":
         #getting neccessary data at once
-        name = request.form.get("symbol")
         try:
-            share = int(request.form.get("shares"))
+            name = request.form.get("symbol")
+            try:
+                share = int(request.form.get("shares"))
+            except:
+                return apology("invalid value ")
+
+            if name is None or share is None:
+                return apology("Invalid ")
+
+            data = lookup(name)
+
+            if data["price"] is None:
+                return apology("something tickle")
+
+            transaction_type = "buy"
+            available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
+
+            if available_cash is None:
+                return apology("no scuh row")
+            #checking for possible errors
+
+            if data is None or share <= 0:
+                return apology("INVALID Symbol")
+            if share * data["price"] > available_cash[0]["cash"]:
+                return apology("bhikhaari sala")
+
+            #store in sqlite table
+            db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), transaction_type, data["name"], share, data["price"], transaction_time())
+
+            #updating the cash in the user table
+            update_cash  = (available_cash[0]["cash"] - share * data["price"])
+            db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
+
+            #redirect "TO HOMEPAGE
+            return redirect("/")
         except:
-            return apology("invalid value ")
-
-        if name is None or share is None:
-            return apology("Invalid ")
-
-        data = lookup(name)
-
-        if data["price"] is None:
-            return apology("something tickle")
-
-        transaction_type = "buy"
-        available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
-        if available_cash is None:
-            return apology("no scuh row")
-        #checking for possible errors
-
-        if data is None or share <= 0:
-            return apology("INVALID Symbol")
-        if share * data["price"] > available_cash[0]["cash"]:
-            return apology("bhikhaari sala")
-
-        #store in sqlite table
-        db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), transaction_type, data["name"], share, data["price"], transaction_time())
-
-        #updating the cash in the user table
-        update_cash  = (available_cash[0]["cash"] - share * data["price"])
-        db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
-
-        #redirect "TO HOMEPAGE
-        return redirect("/")
+            return apology("cannt")
 
     else:
         return render_template("buy.html")
