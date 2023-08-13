@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    sell
+{% endblock %}
+
+{% block main %}
+    <form name = "form" method ="POST" >
+
+        <select name="symbol">
+            <option value = "Symbol "> Select Symbol</option>
+            {% for items in db_symbols %}
+                <option value="{{ items.symbols }}">{{ items.symbols }}</option>
+            {% endfor %}
+        </select>
+        <input type ="number" name = "shares"  placeholder ="Shares">
+        <button type="submit" name ="submit" placeholder="Submit"> Submit </button>
+    </form>
+{% endblock %}
