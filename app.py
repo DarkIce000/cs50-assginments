@@ -66,7 +66,7 @@ def index():
 def buy():
     if request.method == "POST":
         #getting neccessary data at once
-        name = request.form.get("name")
+        name = request.form.get("symbol")
         share = int(request.form.get("shares"))
         data = lookup(name)
         transaction_type = "buy"
