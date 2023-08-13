@@ -67,7 +67,7 @@ def buy():
     if request.method == "POST":
         #getting neccessary data at once
         name = request.form.get("Name")
-        share = int(request.form.get("Share"))
+        share = int(request.form.get("Shares"))
         data = lookup(name)
         transaction_type = "buy"
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
