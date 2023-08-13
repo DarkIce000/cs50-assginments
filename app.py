@@ -70,12 +70,13 @@ def index():
 def buy():
     if request.method == "POST":
         #getting neccessary data at once
-        name = request.form.get("symbol")
+
         try:
+            name = request.form.get("symbol")
             share = int(request.form.get("shares"))
         except:
             return apology("invalid value ")
-        
+
         data = lookup(name)
         transaction_type = "buy"
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
