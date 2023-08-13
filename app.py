@@ -82,6 +82,8 @@ def buy():
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
         #checking for possible errors
+        if name is None or share is None:
+            return apology("Invalid ")
         if data is None or share <= 0:
             return apology("INVALID Symbol")
         if share * data["price"] > available_cash[0]["cash"]:
@@ -164,6 +166,10 @@ def quote():
     if request.method == "POST":
        name = request.form.get("symbol")
        data = lookup(name)
+       if name is None:
+           return apology("invalid")
+       if data is None:
+           return apology("invalid")
        return render_template("quoted.html", Name = data["name"], Symbol = data["symbol"] , Price = data["price"])
     else:
         return render_template("quote.html")
