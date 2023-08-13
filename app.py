@@ -34,6 +34,10 @@ def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
     return time
 
+def check_integeral(string):
+    if not isdigit(string):
+        return apology("invalid value")
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
@@ -67,7 +71,11 @@ def buy():
     if request.method == "POST":
         #getting neccessary data at once
         name = request.form.get("symbol")
-        share = int(request.form.get("shares"))
+        try:
+            share = int(request.form.get("shares"))
+        except:
+            return apology("invalid value ")
+        
         data = lookup(name)
         transaction_type = "buy"
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
@@ -191,10 +199,11 @@ def sell():
     """Sell shares of stock"""
     if request.method == "POST":
         symbol = request.form.get("symbol")
-        sell_shares = int(request.form.get("shares"))
+        try:
+            sell_shares = int(request.form.get("shares"))
+        except:
+            return apology("invalid value")
         transaction_type = "sell"
-        buy = "buy"
-        sell = "sell"
 
     #for available balance
         sShares = db.execute("SELECT SUM(shares) AS sumsShares FROM transactions where user_id = ? AND symbols = ? AND transaction_type = 'sell'", username(), symbol)
