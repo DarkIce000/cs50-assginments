@@ -25,9 +25,12 @@ Session(app)
 db = SQL("sqlite:///finance.db")
 
 def username():
-        id  = session["user_id"]
-        username = db.execute("SELECT username FROM users WHERE id = ?", id)
-        return username[0]["username"]
+        try:
+            id  = session["user_id"]
+            username = db.execute("SELECT username FROM users WHERE id = ?", id)
+            return username[0]["username"]
+        except:
+            return None
 
 def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
@@ -76,14 +79,13 @@ def buy():
 
         data = lookup(name)
 
-        if data is None or data["price"] is None or data["symbol"] is None or data["name"] is None:
+        if data is None:
             return apology("data[symbol]")
 
-        transaction_type = "buy"
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
-        if available_cash[0]["cash"] is None or available_cash is None:
-            return apology("no scuh row")
+        if available_cash is None:
+            return apology("no cash")
         #checking for possible errors
 
         if share <= 0:
@@ -92,17 +94,15 @@ def buy():
             return apology("bhikhaari sala")
         if not username == None:
              #store in sqlite table
-            db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), transaction_type, data["name"], share, data["price"], transaction_time())
+            db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), 'buy', data["name"], share, data["price"], transaction_time())
 
             update_cash  = (available_cash[0]["cash"] - (share * data["price"]))
             db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
 
             #redirect "TO HOMEPAGE
             return redirect("/")
-
-
-
-
+        else:
+            return redirect("login.html")
     else:
         return render_template("buy.html")
 
