@@ -1,7 +1,7 @@
 import os
 import datetime
 import pytz
-
+import sys
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
@@ -24,13 +24,10 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///finance.db")
 
-
 def username():
-    user_id  = session.get("user_id")
-    if user_id is None:
-        return apology("something wrong")
-    username = db.execute("SELECT username from users where id = ?", user_id)
-    return username[0]["username"]
+        id  = session["user_id"]
+        username = db.execute("SELECT username FROM users WHERE id = ?", id)
+        return username[0]["username"]
 
 def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
@@ -52,16 +49,16 @@ def index():
     #order details and shares of each bought companies, total cash
     portfolio = db.execute("SELECT symbols, SUM(shares) AS total_shares FROM transactions WHERE user_id = ? GROUP BY symbols", username())
     data_list = []
-    cash = db.execute("SELECT cash FROM users WHERE username = ?", username())
     stock_price = 0.00
     for items in portfolio:
             look_up = lookup(items["symbols"])
             total = look_up["price"] * items["total_shares"]
-            stock_price = int(stock_price) + total
+            stock_price = stock_price + total
             data_list.append(look_up)
+    cash = db.execute("SELECT cash FROM users WHERE username = ?", username())
     total_amt = stock_price + cash[0]["cash"]
     #price to be added
-    return render_template("index.html", portfolio = portfolio, data_list = data_list, cash = cash[0]["cash"], total = total_amt)
+    return render_template("index.html", portfolio = portfolio, data_list = data_list, cash = round(cash[0]["cash"], 2), total = total_amt)
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
@@ -85,7 +82,7 @@ def buy():
         transaction_type = "buy"
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
-        if available_cash[0]["cash"] or available_cash is None:
+        if available_cash[0]["cash"] is None or available_cash is None:
             return apology("no scuh row")
         #checking for possible errors
 
@@ -97,8 +94,7 @@ def buy():
         #store in sqlite table
         db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), transaction_type, data["name"], share, data["price"], transaction_time())
 
-        #updating the cash in the user table
-        update_cash  = (available_cash[0]["cash"] - share * data["price"])
+        update_cash  = (available_cash[0]["cash"] - (share * data["price"]))
         db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
 
         #redirect "TO HOMEPAGE
