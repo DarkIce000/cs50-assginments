@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    <table method="get" name="portfolio" class="table table-striped">
+        <thead>
+            <tr>
+                <th>SYMBOLS</th>
+                <th>SHARES</th>
+                <th>PRICE</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for items in portfolio%}
+                <tr>
+                    <td>{{ items.symbols }}</td>
+                    <td>{{ items.total_shares }}</td>
+                    {% for data in data_list%}
+                        {% if data.symbol == items.symbols %}
+                            <td>{{ data.price }}</td>
+                            <td>{{ items.total_shares * data.price }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+                <td class="border-0 text-end">{{ cash }}</td>
+            </tr>
+            <tr>
+                <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+                <td class="border-0 w-bold text-end">{{ total }}</td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
