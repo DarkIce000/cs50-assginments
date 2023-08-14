@@ -97,10 +97,11 @@ def buy():
             update_cash  = (available_cash[0]["cash"] - (share * data["price"]))
             db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
 
+            #redirect "TO HOMEPAGE
+            return redirect("/")
 
 
-        #redirect "TO HOMEPAGE
-        return redirect("/")
+
 
     else:
         return render_template("buy.html")
