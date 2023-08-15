@@ -86,4 +86,36 @@ SELECT symbols, SUM(shares) from buy where user_id = "kk" group by symbols
 
 ---changing everythhing, deleting buy and sell tables and create a transaction table of combined
 -- modifying everthing according to new table
---
+--     if not username == None:
+
+# ... (other code)
+
+if data is None:
+    return apology("Invalid symbol")
+
+available_cash = db.execute("SELECT cash FROM users WHERE username = ?", (username(),))
+
+if not available_cash:
+    return apology("No cash")
+
+if username() is not None:
+    if share <= 0:
+        return apology("Invalid shares")
+
+    if share * data["price"] > available_cash[0]["cash"]:
+        return apology("Insufficient funds")
+
+    transaction_type = 'buy'
+    transaction_time = transaction_time()  # Assuming this is defined
+
+    db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)",
+               (username(), transaction_type, data["name"], share, data["price"], transaction_time))
+
+    update_cash = available_cash[0]["cash"] - (share * data["price"])
+    db.execute("UPDATE users SET cash = ? WHERE username = ?", (update_cash, username()))
+
+    return redirect("/")
+else:
+    return render_template("login.html")
+
+# ... (other code)

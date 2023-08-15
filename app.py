@@ -84,15 +84,15 @@ def buy():
 
         available_cash = db.execute("SELECT cash FROM users WHERE username = ? ", username())
 
-        if available_cash is None:
+        if not available_cash:
             return apology("no cash")
         #checking for possible errors
-
+     if not username() == None:
         if share <= 0:
             return apology("INVALID Symbol")
         if share * data["price"] > available_cash[0]["cash"]:
             return apology("bhikhaari sala")
-        if not username == None:
+
              #store in sqlite table
             db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), 'buy', data["name"], share, data["price"], transaction_time())
 
@@ -101,8 +101,6 @@ def buy():
 
             #redirect "TO HOMEPAGE
             return redirect("/")
-        else:
-            return render_template("login.html")
     else:
         return render_template("buy.html")
 
