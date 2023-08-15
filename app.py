@@ -27,7 +27,10 @@ db = SQL("sqlite:///finance.db")
 def username():
         id  = session["user_id"]
         username = db.execute("SELECT username FROM users WHERE id = ?", id)
-        return username[0]["username"]
+        if username is None:
+            return None
+        else:
+            return username[0]["username"]
 
 def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
