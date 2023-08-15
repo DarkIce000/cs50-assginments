@@ -87,20 +87,21 @@ def buy():
         if not available_cash:
             return apology("no cash")
         #checking for possible errors
-     if not username() == None:
-        if share <= 0:
-            return apology("INVALID Symbol")
-        if share * data["price"] > available_cash[0]["cash"]:
-            return apology("bhikhaari sala")
+        if not username() == None:
 
-             #store in sqlite table
-            db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), 'buy', data["name"], share, data["price"], transaction_time())
+            if share <= 0:
+                return apology("INVALID Symbol")
+            if share * data["price"] > available_cash[0]["cash"]:
+                return apology("bhikhaari sala")
 
-            update_cash  = (available_cash[0]["cash"] - (share * data["price"]))
-            db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
+                #store in sqlite table
+                db.execute("INSERT INTO transactions (user_id, transaction_type, symbols, shares, price, transaction_time) VALUES (?, ?, ?, ?, ?, ?)", username(), 'buy', data["name"], share, data["price"], transaction_time())
 
-            #redirect "TO HOMEPAGE
-            return redirect("/")
+                update_cash  = (available_cash[0]["cash"] - (share * data["price"]))
+                db.execute("UPDATE users SET cash = ? where username = ?", update_cash, username())
+
+                #redirect "TO HOMEPAGE
+                return redirect("/")
     else:
         return render_template("buy.html")
 
