@@ -16,26 +16,28 @@
 
         <tbody>
             {% for items in portfolio%}
+                {% if not items.total_shares == 0 %}
                 <tr>
                     <td>{{ items.symbols }}</td>
                     <td>{{ items.total_shares }}</td>
                     {% for data in data_list%}
                         {% if data.symbol == items.symbols %}
-                            <td>{{ data.price }}</td>
-                            <td>{{ items.total_shares * data.price }}</td>
+                            <td>{{ data.price | usd }}</td>
+                            <td>{{ (items.total_shares * data.price) | usd }}</td>
                         {% endif %}
                     {% endfor %}
                 </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
         <tfoot>
             <tr>
                 <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
-                <td class="border-0 text-end">{{ cash }}</td>
+                <td class="border-0 text-end">{{ cash | usd }}</td>
             </tr>
             <tr>
                 <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
-                <td class="border-0 w-bold text-end">{{ total }}</td>
+                <td class="border-0 w-bold text-end">{{ total | usd }}</td>
             </tr>
         </tfoot>
     </table>

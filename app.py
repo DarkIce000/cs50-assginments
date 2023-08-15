@@ -25,12 +25,9 @@ Session(app)
 db = SQL("sqlite:///finance.db")
 
 def username():
-        try:
-            id  = session["user_id"]
-            username = db.execute("SELECT username FROM users WHERE id = ?", id)
-            return username[0]["username"]
-        except:
-            return None
+        id  = session["user_id"]
+        username = db.execute("SELECT username FROM users WHERE id = ?", id)
+        return username[0]["username"]
 
 def transaction_time():
     time = datetime.datetime.now(pytz.timezone("US/Eastern"))
@@ -61,7 +58,7 @@ def index():
     cash = db.execute("SELECT cash FROM users WHERE username = ?", username())
     total_amt = stock_price + cash[0]["cash"]
     #price to be added
-    return render_template("index.html", portfolio = portfolio, data_list = data_list, cash = round(cash[0]["cash"], 2), total = total_amt)
+    return render_template("index.html", portfolio = portfolio, data_list = data_list, cash = cash[0]["cash"], total = total_amt)
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
@@ -102,7 +99,7 @@ def buy():
             #redirect "TO HOMEPAGE
             return redirect("/")
         else:
-            return redirect("login.html")
+            return render_template("login.html")
     else:
         return render_template("buy.html")
 
@@ -226,7 +223,7 @@ def sell():
 
         tTime = transaction_time()
     #error handling
-        if sell_shares >= available_shares:
+        if sell_shares > available_shares:
             return apology("You don't have that much of shares")
         if symbol == None:
             return apology("Please choose a share symbol")

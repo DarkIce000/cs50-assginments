@@ -16,7 +16,7 @@
         <tr>
             <td name="symbols">{{ items.symbols }}</td>
             <td name="shares">{{ items.shares }}</td>
-            <td name="price">{{ items.price }}</td>
+            <td name="price">{{ items.price | usd }}</td>
             <td name="transaction_time">{{ items.transaction_time }}</td>
         </tr>
         {% endfor %}
