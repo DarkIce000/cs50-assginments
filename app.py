@@ -102,6 +102,8 @@ def buy():
 
                 #redirect "TO HOMEPAGE
                 return redirect("/")
+        else:
+            render_template("buy.html")
     else:
         return render_template("buy.html")
 
