@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <table name="table" class="table">
+        <tr>
+            <th name="symbols">Symbols</th>
+            <th name="shares"> Shares </th>
+            <th name="price"> Price </th>
+            <th name="transaction_time"> Time </th>
+        </tr>
+        {% for items in data %}
+        <tr>
+            <td name="symbols">{{ items.symbols }}</td>
+            <td name="shares">{{ items.shares }}</td>
+            <td name="price">{{ items.price | usd }}</td>
+            <td name="transaction_time">{{ items.transaction_time }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}
