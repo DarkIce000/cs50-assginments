@@ -17,15 +17,12 @@ def main():
         strnames = reader.fieldnames
         for name in reader:
             database.append(name)
-    print(database)
-    print(strnames[1:])
 
 
     # TODO: Read DNA sequence file into a variable
     sequences= []
     with open(sys.argv[2], 'r') as txtfile:
          sequences.append(txtfile.readline())
-    print(sequences)
 
 
     # TODO: Find longest match of each STR in DNA sequence
@@ -33,9 +30,8 @@ def main():
     headers= strnames[1:]
     for names in headers:
         count = longest_match(sequences[0], names)
-        print(names)
+
         counter.append(count)
-    print(counter)
 
 
     # TODO: Check database for matching profiles
