@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     char filename[10];
 
     FILE *output_file = NULL;
-    BYTE* buffer = malloc(BLOCK_SIZE + 1);
+    BYTE* buffer = NULL;
     while (fread(buffer, 1, BLOCK_SIZE, inputptr) == BLOCK_SIZE)
     {
 
