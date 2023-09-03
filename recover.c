@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     char filename[10];
 
     FILE *output_file = NULL;
-    BYTE* buffer = NULL;
+    BYTE* buffer = malloc(BLOCK_SIZE);
     while (fread(buffer, 1, BLOCK_SIZE, inputptr) == BLOCK_SIZE)
     {
 
@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
             output_file = fopen(filename, "w");
 
             fwrite(buffer, BLOCK_SIZE, 1, output_file);
+            free(buffer);
             // if (output_file == NULL)
             // {
 
@@ -52,6 +53,7 @@ int main(int argc, char *argv[])
         {
             //if the signature not found continue writing the old file
             fwrite(buffer, BLOCK_SIZE, 1, output_file);
+            free(buffer);
         }
         else
             continue;
