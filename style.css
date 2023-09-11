@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.topBar{
+  width:100%;
+  display:flex;
+  justify-content: flex-end;
+  margin: 8px; 
+  padding: 8px;
+}
+form{
+  width:80vw;
+}
+
+.midSearchBar{
+  display:flex;
+  width: 100%;
+  height: 100vh;
+  justify-content:center;
+  align-items: center;
+}
+
+input.Input{
+  display:flex;
+  white-space: nowrap;
+  width:100%;
+  height:2rem;
+}
+
+div.btn{
+  padding: 1rem 0 1rem 0;
+  display:flex;
+  justify-content:space-evenly;
+}
+
+div.btn > input{
+  width: 20vw;
+  margin:1px;
+  height:2rem;
+}
+input{
+  border: 1px solid black;
+  border-radius: 100px;
+  padding:0 2rem 0 2rem;
+  margin: 1rem 0 0 0;
+}
+
+a{
+  margin:2px 4px 2px 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  padding:2px;
+  color:black;
+}
+
+a:hover{
+  background-color: rgb(221, 218, 214);
+  color: black;
+}
+
+input:hover{
+  background-color:rgb(238, 235, 231);
+}
+
+body{
+  background: url("bg.jpg");
+  backdrop-filter: blur(5px);
+}
