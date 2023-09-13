@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Image Search</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <script src="https://kit.fontawesome.com/e183061512.js" crossorigin="anonymous"></script>
   
 </head>
   <body>
+
     <div class="topBar">
         <a href="index.html">&#10229; Go Back</a>
     </div>
 
     <div class="midSearchBar">
+        <img  class="logoimage" src="logoimage.png" alt="logoGoogle">
         <form action="https://www.google.com/search" id="tsf" data-submitfalse="q" method="GET" name="gs" role="search">
-            <input class="Input" type="text" name="q" placeholder="Search On Google" >
-            <div class="btn">
-                <input name="tbm" value="isch" type="hidden">
-                <input name="sca_esv" value="564020962" type="hidden">
-                <input type="submit" value="Image Search" >
+            <input class="searchBar" type="text" name="q" placeholder="Search On Google" >
+            <div class="btnContainer">
+                <input class="buttons" name="tbm" value="isch" type="hidden">
+                <input class="buttons" name="sca_esv" value="564020962" type="hidden">
+                <input class="buttons" type="submit" value="Image Search" >
             </div>
         </form>
     </div>

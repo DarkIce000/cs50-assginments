@@ -1,82 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
+
+html{
+    background-color:rgb(77, 77, 77);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
 }
 
 .topBar{
-  width:100%;
-  display:flex;
-  justify-content: flex-end;
-  margin: 8px;
-  padding: 8px;
-}
-form{
-  width:80vw;
+    display:flex;
+    justify-content:flex-end;
+    margin: 4px;
 }
 
-.midSearchBar{
-  display:flex;
-  width: 100%;
-  height: 100vh;
-  justify-content:center;
-  align-items: center;
+
+.searchBar{
+ align-self:flex-end;
+ min-width:300px;
+ height: 30px;
+ margin: 4px;
+ color:white;
+ background-color:#303134;
+ border: 1px solid black;
 }
 
-input.Input{
-  display:flex;
-  white-space: nowrap;
-  width:100%;
-  height:2rem;
-}
-
-div.btn{
-  padding: 1rem 0 1rem 0;
-  display:flex;
-  justify-content:flex-end;
-}
-
-div.btn > input{
-  width: 20vw;
-  margin:1px;
-  height:2rem;
-}
-input{
-  border: 1px solid black;
-  border-radius: 4px;
-  padding:0 2rem 0 2rem;
-}
-a{
-  margin:2px 4px 2px 4px;
-  border-radius: 4px;
-  text-decoration: none;
-  padding:2px;
-}
-label{
-  margin: 20px 0 0 0;
-}
-
-input[type="submit"]{
-  background-color: #4d90fe;
-  color: white;
-}
-
-body{
-  background: url("bg.jpg");
-  backdrop-filter: blur(5px);
+.buttons{
+    color: white;
+    background-color:#3079ed;
+    border: 1px solid #3079ed;
+    border-radius: 4px;
+    height: 30px;
 }
 
 a{
-  margin:2px 4px 2px 4px;
-  border-radius: 4px;
-  text-decoration: none;
-  padding:2px;
-  color:black;
+    color: white;
+    text-decoration:none;
+    margin: 8px;
 }
 
 a:hover{
-  background-color: rgb(221, 218, 214);
-  color: black;
+    text-decoration:underline;
+}
+
+.inputArea{
+    display:grid;
+    grid-template-columns: 20% 40%;
+    grid-template-rows: repeat(4, 10%);
+    margin: 8px;
+    padding: 8px;
+    gap: 20px;
+}
+
+.btnContainer{
+    grid-row: 5;
+    grid-column: 2;
+    display:flex; 
+    justify-content: flex-end;
 }
