@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the approximate ratio of people to ship in New Zealand?</h3>
+                <button type="submit" class="multi" value="6in1">person 1 sheep</button>
+                <button type="submit" class="multi" value="3in1">3 person 1 sheep</button>
+                <button type="submit" class="correct" value="1in1"> 1 person 1 sheep </button>
+                <button type="submit" class="multi" value="1in3">1 person 3 sheep</button>
+                <button type="submit" class="multi" value="1in6">1 person 6 sheep</button>
+                <!-- TODO: Add multiple choice question here -->
+                <p id="feedback" ></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>In which country it is illegal to own only a guinea pig, as lone guinea pig might get lonely?</h3>
+                <input type="text" id="q2">
+                <button id="checkAnswer" >Check Answer</button>
+                <!-- TODO: Add free response question here -->
+            </div>
+        </div>
+
+        <script src="index.js">
+
+        </script>
+    </body>
+</html>
