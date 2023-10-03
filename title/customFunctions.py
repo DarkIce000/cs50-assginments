@@ -8,7 +8,8 @@ def render_title(request, name):
     if util.get_entry(name):
         convertedInHtml = markdowner.convert(util.get_entry(name))
         return render(request, "title/title.html", {
-            "page": convertedInHtml
+            "page": convertedInHtml,
+            "name": name
         })
 
 
@@ -18,3 +19,8 @@ def checker(name):
             return title
          
     return None
+
+def searchSequence(word, sequence):
+    if sequence in word:
+        return word
+    return None         
