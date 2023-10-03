@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+   {{page | safe}}
+   <div style="display:flex; text-align: center;"> 
+       <span ><a href="/wiki/{{name}}/edit"> [Edit This Page] </a></span>
+   </div>
+
+{% endblock %}

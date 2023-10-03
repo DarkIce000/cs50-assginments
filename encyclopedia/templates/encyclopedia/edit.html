@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+    <h1>Create Page</h1>
+    <form action="/wiki/{{name}}/edit/" class="form" method="post">
+
+        {% csrf_token %}
+        <label>Title: </label><br>
+          {{ form.titleOfPage }}<br>
+        <label>Description:</label><br>
+        {{ form.Description}}<br>
+        <input type="submit" name="submit_button">
+
+    </form>
+{% endblock %}

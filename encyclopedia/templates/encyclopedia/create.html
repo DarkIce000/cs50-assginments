@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Create Page</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+
+    <form action="{% url 'homepage:create' %}" class="form" method="post">
+        {% csrf_token %}
+        <label>Title: </label><br>
+          {{ form.titleOfPage }}<br>
+        <label>Description:</label><br>
+        {{ form.Description}}<br>
+        <input type="submit" name="submit_button">
+    </form>
+{% endblock %}
