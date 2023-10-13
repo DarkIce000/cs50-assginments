@@ -102,7 +102,7 @@ bool load(const char *dictionary)
 
         //pointing the pointer next  to the old table linked
 
-        noOfWords++;
+        noOfWords += 1;
 
     }
 
