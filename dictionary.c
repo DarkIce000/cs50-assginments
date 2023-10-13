@@ -121,7 +121,7 @@ unsigned int size(void)
     {
         return noOfWords;
     }
-    return 0;
+    return noOfWords;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
