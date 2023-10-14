@@ -61,53 +61,49 @@ unsigned int hash(const char *word)
 
 bool load(const char *dictionary)
 {
-    // TODO
     FILE *dict = fopen(dictionary, "r");
-
-    if(dict == NULL)
+    if (dict == NULL)
     {
         printf("Could not load");
         return false;
     }
 
-    //declaring word variable to store in the scanned data
-    char *string = malloc(sizeof(LENGTH));
+    char *string = malloc(LENGTH + 1);
+    if (string == NULL)
+    {
+        printf("Memory allocation failed");
+        fclose(dict);
+        return false;
+    }
 
-    while(fscanf(dict, "%s", string) == EOF)
+    while (fscanf(dict, "%s", string) != EOF)
     {
         node *pointerNode = malloc(sizeof(node));
-
-        if(pointerNode == NULL)
+        if (pointerNode == NULL)
         {
-            printf("error in allocating memory for newNode");
+            printf("Memory allocation failed");
+            free(string);
+            fclose(dict);
             return false;
         }
 
-        strcpy(pointerNode -> word, string);
-
-
-        //creating a hash for the string
+        strcpy(pointerNode->word, string);
         int hashValue = hash(string);
+
         if (table[hashValue] == NULL)
         {
-            pointerNode -> next = NULL;
-
+            pointerNode->next = NULL;
         }
         else
         {
-            pointerNode -> next = table[hashValue];
+            pointerNode->next = table[hashValue];
         }
 
         table[hashValue] = pointerNode;
-
-        //pointing the pointer next  to the old table linked
-
         noOfWords += 1;
-
     }
 
-    //close the opened file
-    //return the malloced memory from the newNode;
+    free(string);
     loadedDict = true;
     fclose(dict);
     return true;
