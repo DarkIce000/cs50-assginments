@@ -86,6 +86,7 @@ bool load(const char *dictionary)
             fclose(dict);
             return false;
         }
+        //copying the string to the pointerNode word
 
         strcpy(pointerNode->word, string);
         int hashValue = hash(string);
@@ -94,15 +95,18 @@ bool load(const char *dictionary)
         {
             pointerNode->next = NULL;
         }
+        //now changing next to the point the table
         else
         {
             pointerNode->next = table[hashValue];
         }
 
         table[hashValue] = pointerNode;
+        
+        //this is for the size function to calculate the no words that are loaded
         noOfWords += 1;
     }
-
+//freeing the stirng and dict file after the pointing
     free(string);
     loadedDict = true;
     fclose(dict);
