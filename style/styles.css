@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family:'Roboto', sans-serif, Courier, monospace;
+}
+
+.roundedBorder{
+    border-width:3px !important;
+    border-radius:10px !important;
+    border-color: solid black !important;
+}
+
+
+:focus, :hover,:active{
+    text-decoration: none;
+    outline: 0 !important;
+    outline-offset: 0;
+}
