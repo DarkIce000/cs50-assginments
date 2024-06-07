@@ -1,0 +1,80 @@
+
+<!-- this is the html layout for the my bids which shows the list of product that the current user has bid upon -->
+
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+  My Bids
+{% endblock %}
+{% block body %}
+  <div class="container-xxl">
+    <div class="row justify-content-between">
+      
+
+      <div class="col-xxl-5">
+        <div class="row">
+          <h1> Current Bids </h1>
+          <hr>
+
+          {% for item in current_bids %}
+            <div class="col-xxl-8">
+              <div class="col mt-1">
+                  <div class="card my-2 shadow-lg">
+                      <img src="{{ item.imageUrl }}" class="card-img-top img-thumbnail img-fluid" alt="..."
+                          style="object-fit:contain; height:150px; width: 100px;">
+                      <div class="card-body">
+                          <h5 class="card-title text-truncate">{{ item.product_title }}</h5>
+                          <p class="card-text text-truncate ">{{ item.description }}</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><b>Seller: </b> <span style="color:midnightblue"></span> {{item.seller }} </span></li>
+                          <li class="list-group-item"><b>Default Bid:</b> &#36; {{ item.bids.initialBid }}</li>
+                          <li class="list-group-item"><b>Current Bid:</b> &#36;{{ item.bids.last_bid }}</li>
+                      </ul>
+                      <div class="card-body">
+                          <a href="{{ item.id }}" class="card-link btn btn-primary"> Go to Product Page </a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        {% endfor %}
+
+        </div>
+      </div>
+
+
+      <!-- column  -->
+
+      <div class="col-xxl-5">
+        <div class="row">
+         <h1>Bids You Won</h1> 
+
+          <hr>
+          {% for item in won_bids %}
+            <div class="col-xxl-8">
+              <div class="col mt-1">
+                  <div class="card my-2 shadow-lg">
+                      <img src="{{ item.imageUrl }}" class="card-img-top img-thumbnail img-fluid" alt="..."
+                          style="object-fit:contain; height:150px; width: 100px;">
+                      <div class="card-body">
+                          <h5 class="card-title text-truncate">{{ item.product_title }}</h5>
+                          <p class="card-text text-truncate ">{{ item.description }}</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><b>Seller: </b> <span style="color:midnightblue"></span> {{item.seller }} </span></li>
+                          <li class="list-group-item"><b>Default Bid:</b> &#36; {{ item.bids.initialBid }}</li>
+                          <li class="list-group-item"><b>Current Bid:</b> &#36;{{ item.bids.last_bid }}</li>
+                  </div>
+              </div>
+            </div>
+        {% endfor %}
+
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+{% endblock %}
+
+

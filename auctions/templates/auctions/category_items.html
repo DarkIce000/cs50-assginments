@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="container-xxl">
+    <h1 class="display-5 text-muted">Category: {{ category_name }}</h1>
+    <div class="row p-2 justify-content-center">
+        {% for item in item_inthe_category %}
+        <div class="col-xxl-3 col-lg-4 col-md-6">
+            <div class="col mt-1">
+                <div class="card my-2 shadow-lg">
+                    <img src="{{ item.imageUrl }}" class="card-img-top img-thumbnail img-fluid" alt="..."
+                        style="object-fit:contain; height:350px; width: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">{{ item.product_title }}</h5>
+                        <p class="card-text text-truncate ">{{ item.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Seller: </b> <span style="color:midnightblue"></span> {{item.seller }} </span></li>
+                        <li class="list-group-item"><b>Default Bid:</b> &#36; {{ item.bids.initialBid }}</li>
+                        <li class="list-group-item"><b>Current Bid:</b> &#36;{{ item.bids.last_bid }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="/{{ item.id }}" class="card-link btn btn-primary"> Go to Product Page </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

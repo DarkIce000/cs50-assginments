@@ -1,0 +1,19 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+  Your Bids 
+{% endblock %}
+
+{% block body %}
+  {% if usrBid is None%}
+     return None 
+  {%endif %}
+
+  {% for i in usrBid %}
+    {{ i.product_title }}
+    </br>
+    {{ i.description }}
+    </br>
+    {{ i.imageUrl }}
+  {% endfor %}
+{% endblock %}
