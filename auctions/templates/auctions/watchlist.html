@@ -1,0 +1,54 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+  Watchlist
+{% endblock %}
+{% block body %}
+<div class="container-xxl mt-6">
+    <h1 class="display-5 text-muted">My Watchlist</h1>
+    <hr>
+    <div class="row p-2 justify-content-center">
+        {% for item in list %}
+          <div class="card m-3" style="max-height:250px">
+            <div class="row g-0" style="height:250px; overflow: hidden;">
+              <div class="col-4" style="height:250px;">
+                <img src="{{ item.product_id.imageUrl }}"  class="img-fluid rounded-start" alt="..." style="height:250px; object-fit: cover">
+              </div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title text-truncate">{{item.product_id.product_title}}</h5>
+                  <p class="card-text text-truncate"> {{item.product_id.description}} </p>
+                  <p class="card-text text-truncate">$ {{item.product_id.bids.last_bid }}</p>
+                  <p class="card-text "><small class="text-body-secondary"><a href="{% url 'product_page' item.product_id.id%}" class="btn btn-primary btn-small">Go to Product Page </a></small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!--         
+        <div class="col-xxl-3 col-lg-4 col-md-6">
+            <div class="col mt-1">
+                <div class="card my-2 shadow-lg">
+                    <img src="{{ item.product_id.imageUrl }}" class="card-img-top img-thumbnail img-fluid" alt="..."
+                        style="object-fit:contain; height:350px; width: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate">{{ item.product_id.product_title }}</h5>
+                        <p class="card-text text-truncate ">{{ item.product_id.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Seller: </b> <span style="color:midnightblue"></span> {{item.product_id.seller }} </span></li>
+                        <li class="list-group-item"><b>Default Bid:</b> &#36; {{ item.product_id.bids.initialBid }}</li>
+                        <li class="list-group-item"><b>Current Bid:</b> &#36;{{ item.product_id.bids.last_bid }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="{% url 'product_page' item.product_id.id%}" class="card-link"> Go to Product Page </a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
