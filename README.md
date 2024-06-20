@@ -11,4 +11,4 @@
 
 ## A Thank You Note
 
-Thank you so much **David J. Malan** and **Bran Yu** for creating such an amazing course, with certificate. That certificate motived me to keep going after several failure in projection submission and its correction. Long live **cs50** ❤‍🔥.
+Thank you so much **David J. Malan** and **Bran Yu** for creating such an amazing course, with certificate. That certificate motived me to keep going after several failure in project submission and sometimes its correctness. Long live **cs50** ❤‍🔥.
