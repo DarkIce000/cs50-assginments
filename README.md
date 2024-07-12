@@ -3,7 +3,7 @@
 > Warning : This repository is meant for showcase purpose and for my future reference only. Copying or pasting will may result you ban from cs50 course. And also they regularly updating the assignments and projects every year. So this will, not be any use of yours.
 > 
 
-## About
+## About(Switch Branches(default main has only readme file) for the Codes)
 
 - In may 2023, I started the cs50 course. After long 6-7 months I have completed all the lecture, assignments and projects
 - I have created Glance - a chrome extension which I always proud that i have created something like that with the gain in confidence with my coding knowledge, that cs50 have built in me.
